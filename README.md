@@ -2,7 +2,7 @@
 
 This repository drives the [COPR build](https://copr.fedorainfracloud.org/coprs/jbcrawford/kanidm/) for Kanidm. This package is closely based on the SuSE build and in use on some production machines, but should probably still be regarded as beta.
 
-The package should build automatically on KanIDM release for supported Fedora versions (current and previous).
+The package should build automatically on KanIDM release for supported Fedora versions (current and previous). This is based on a once-per-day check so it might take until the next day after the release.
 
 ## How it works
 
