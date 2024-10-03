@@ -58,8 +58,6 @@ BuildRequires:  libopenssl-3-devel
 Requires:       %{name}-clients
 Requires:       %{name}-unixd-clients
 
-ExclusiveArch:  %{rust_tier1_arches}
-
 %description
 An identity management platform written in rust that supports RADIUS, SSH Key management
 and more.
