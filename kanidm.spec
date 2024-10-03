@@ -104,7 +104,7 @@ Documentation for using and configuring Kanidm.
 %setup -q -n kanidm-%{version} -a 0
 
 # Remove exec bits to prevent an issue in fedora shebang checking
-find vendor -type f -name \*.rs -exec chmod -x '{}' \;
+# find vendor -type f -name \*.rs -exec chmod -x '{}' \;
 
 %build
 # Set our build profile, this will autodetect our cpu flags
