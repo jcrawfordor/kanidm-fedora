@@ -15,6 +15,8 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+%define source_date_epoch_from_changelog 0
+
 Name:           kanidm
 Version: 1.3.3
 Release:        1%{?dist}
