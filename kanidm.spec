@@ -28,7 +28,7 @@ URL:            https://github.com/Firstyear/kanidm
 Source:        https://github.com/kanidm/kanidm/archive/refs/tags/v%{version}.tar.gz
 
 BuildRequires:  cargo
-BuildRequires:  cargo-packaging
+BuildRequires:  rust-packaging
 %if 0%{?is_opensuse}
 BuildRequires:  llvm-clang >= 13
 %else
