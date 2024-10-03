@@ -104,7 +104,6 @@ Documentation for using and configuring Kanidm.
 
 %prep
 %setup -q -n kanidm-%{version} -a 0
-%setup -q -n kanidm-%{version} -a 1 -D -T
 
 # Remove exec bits to prevent an issue in fedora shebang checking
 find vendor -type f -name \*.rs -exec chmod -x '{}' \;
