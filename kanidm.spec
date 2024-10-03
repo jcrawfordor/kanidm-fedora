@@ -116,7 +116,7 @@ rustc --print target-cpus
 # Override buildflags, we want to use clang + lld here. It's much better/faster than bfd.
 %define build_rustflags -C linker=clang -C link-arg=-fuse-ld=/usr/lib/rustlib/%{_arch}-unknown-linux-gnu/bin/gcc-ld/ld.lld -C debuginfo=2 -C incremental=false
 
-%{cargo_build} --features=kanidm_unix_int/tpm,kanidm_unix_int/selinux
+cargo build --release --features=kanidm_unix_int/tpm,kanidm_unix_int/selinux
 
 %install
 install -D -d -m 0755 %{buildroot}%{_sysconfdir}
