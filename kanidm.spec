@@ -85,7 +85,7 @@ Documentation for using and configuring Kanidm.
 
 %build
 # Set our build profile, this will autodetect our cpu flags
-export KANIDM_BUILD_PROFILE=release_suse_generic
+export KANIDM_BUILD_PROFILE=release_linux
 # Show linking info for debugging
 # export RUSTC_LOG='rustc_codegen_ssa::back::link=info'
 # Dump the target features of this cpu.
