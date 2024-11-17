@@ -137,7 +137,7 @@ install -m 0755 %{_builddir}/%{name}-%{version}/target/release/build/completions
 install -m 0755 %{_builddir}/%{name}-%{version}/target/release/build/completions/kanidm_ssh_authorizedkeys.bash %{buildroot}%{_sysconfdir}/bash_completion.d/kanidm_ssh_authorizedkeys.sh
 
 cp -r %{_builddir}/%{name}-%{version}/book/src/ %{buildroot}%{_datadir}/kanidm/docs/
-cp -r %{_builddir}/%{name}-%{version}/server/web_ui/pkg %{buildroot}%{_datadir}/kanidm/ui/pkg
+cp -r %{_builddir}/kanidm-%{version}/server/core/static %{buildroot}%{_datadir}/kanidm/ui/hpkg
 
 ## End install
 
@@ -180,10 +180,10 @@ cp -r %{_builddir}/%{name}-%{version}/server/web_ui/pkg %{buildroot}%{_datadir}/
 %{_unitdir}/kanidmd.service
 %dir %{_datadir}/kanidm
 %dir %{_datadir}/kanidm/ui
-%dir %{_datadir}/kanidm/ui/pkg
-%dir %{_datadir}/kanidm/ui/pkg/external
-%{_datadir}/kanidm/ui/pkg/*
-%{_datadir}/kanidm/ui/pkg/external/*
+%dir %{_datadir}/kanidm/ui/hpkg
+%dir %{_datadir}/kanidm/ui/hpkg/external
+%{_datadir}/kanidm/ui/hpkg/*
+%{_datadir}/kanidm/ui/hpkg/external/*
 %dir %{configdir}
 %config(noreplace) %{configdir}/server.toml
 %dir %{_sysconfdir}/zsh_completion.d
