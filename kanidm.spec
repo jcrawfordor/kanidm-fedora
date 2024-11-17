@@ -108,21 +108,24 @@ install -D -d -m 0755 %{buildroot}%{_datadir}/kanidm
 install -D -d -m 0755 %{buildroot}%{_datadir}/kanidm/docs/
 install -D -d -m 0755 %{buildroot}%{_datadir}/kanidm/ui/
 
-install -m 0755 %{_builddir}/%{name}-%{version}/target/release/kanidmd %{buildroot}%{_sbindir}/kanidmd
-install -m 0755 %{_builddir}/%{name}-%{version}/target/release/kanidm %{buildroot}%{_bindir}/kanidm
-install -m 0755 %{_builddir}/%{name}-%{version}/target/release/kanidm-unix %{buildroot}%{_sbindir}/kanidm-unix
-install -m 0755 %{_builddir}/%{name}-%{version}/target/release/kanidm_ssh_authorizedkeys %{buildroot}%{_sbindir}/kanidm_ssh_authorizedkeys
-install -m 0755 %{_builddir}/%{name}-%{version}/target/release/kanidm_ssh_authorizedkeys_direct %{buildroot}%{_sbindir}/kanidm_ssh_authorizedkeys_direct
-install -m 0755 %{_builddir}/%{name}-%{version}/target/release/kanidm_unixd %{buildroot}%{_sbindir}/kanidm_unixd
-install -m 0755 %{_builddir}/%{name}-%{version}/target/release/kanidm_unixd_tasks %{buildroot}%{_sbindir}/kanidm_unixd_tasks
-install -m 0644 %{_builddir}/%{name}-%{version}/target/release/libnss_kanidm.so %{buildroot}%{_libdir}/libnss_kanidm.so.2
+install -m 0755 %{_builddir}/kanidm-%{version}/target/release/kanidmd %{buildroot}%{_sbindir}/kanidmd
+install -m 0755 %{_builddir}/kanidm-%{version}/target/release/kanidm %{buildroot}%{_bindir}/kanidm
+install -m 0755 %{_builddir}/kanidm-%{version}/target/release/kanidm-ipa-sync %{buildroot}%{_sbindir}/kanidm-ipa-sync
+install -m 0755 %{_builddir}/kanidm-%{version}/target/release/kanidm-ldap-sync %{buildroot}%{_sbindir}/kanidm-ldap-sync
+install -m 0755 %{_builddir}/kanidm-%{version}/target/release/kanidm-unix %{buildroot}%{_sbindir}/kanidm-unix
+install -m 0755 %{_builddir}/kanidm-%{version}/target/release/kanidm_ssh_authorizedkeys %{buildroot}%{_sbindir}/kanidm_ssh_authorizedkeys
+install -m 0755 %{_builddir}/kanidm-%{version}/target/release/kanidm_ssh_authorizedkeys_direct %{buildroot}%{_sbindir}/kanidm_ssh_authorizedkeys_direct
+install -m 0755 %{_builddir}/kanidm-%{version}/target/release/kanidm_unixd %{buildroot}%{_sbindir}/kanidm_unixd
+install -m 0755 %{_builddir}/kanidm-%{version}/target/release/kanidm_unixd_tasks %{buildroot}%{_sbindir}/kanidm_unixd_tasks
+install -m 0644 %{_builddir}/kanidm-%{version}/target/release/libnss_kanidm.so %{buildroot}%{_libdir}/libnss_kanidm.so.2
 
 install -m 0644 %{_builddir}/%{name}-%{version}/target/release/libpam_kanidm.so %{buildroot}/%_lib/security/pam_kanidm.so
 
-install -m 0644 %{_builddir}/%{name}-%{version}/platform/opensuse/kanidmd.service %{buildroot}%{_unitdir}/kanidmd.service
-install -m 0644 %{_builddir}/%{name}-%{version}/platform/opensuse/kanidm-unixd.service %{buildroot}%{_unitdir}/kanidm-unixd.service
-install -m 0644 %{_builddir}/%{name}-%{version}/platform/opensuse/kanidm-unixd-tasks.service %{buildroot}%{_unitdir}/kanidm-unixd-tasks.service
-install -m 0644 %{_builddir}/%{name}-%{version}/examples/server.toml %{buildroot}%{configdir}/server.toml
+install -m 0644 %{_builddir}/kanidm-%{version}/platform/opensuse/kanidmd.service %{buildroot}%{_unitdir}/kanidmd.service
+install -m 0644 %{_builddir}/kanidm-%{version}/platform/opensuse/kanidm-unixd.service %{buildroot}%{_unitdir}/kanidm-unixd.service
+install -m 0644 %{_builddir}/kanidm-%{version}/platform/opensuse/kanidm-unixd-tasks.service %{buildroot}%{_unitdir}/kanidm-unixd-tasks.service
+install -m 0644 %{_builddir}/kanidm-%{version}/platform/opensuse/kanidm-ipa-sync.service %{buildroot}%{_unitdir}/kanidm-ipa-sync.service
+install -m 0644 %{_builddir}/kanidm-%{version}/examples/server.toml %{buildroot}%{configdir}/server.toml
 
 install -m 0755 %{_builddir}/%{name}-%{version}/target/release/build/completions/_kanidmd   %{buildroot}%{_sysconfdir}/zsh_completion.d/_kanidmd
 install -m 0755 %{_builddir}/%{name}-%{version}/target/release/build/completions/_kanidm   %{buildroot}%{_sysconfdir}/zsh_completion.d/_kanidm
@@ -177,7 +180,10 @@ cp -r %{_builddir}/kanidm-%{version}/server/core/static %{buildroot}%{_datadir}/
 
 %files server
 %{_sbindir}/kanidmd
+%{_sbindir}/kanidm-ipa-sync
+%{_sbindir}/kanidm-ldap-sync
 %{_unitdir}/kanidmd.service
+%{_unitdir}/kanidm-ipa-sync.service
 %dir %{_datadir}/kanidm
 %dir %{_datadir}/kanidm/ui
 %dir %{_datadir}/kanidm/ui/hpkg
