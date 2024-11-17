@@ -183,7 +183,7 @@ cp -r %{_builddir}/kanidm-%{version}/server/core/static %{buildroot}%{_datadir}/
 %dir %{_datadir}/kanidm/ui/hpkg
 %dir %{_datadir}/kanidm/ui/hpkg/external
 %{_datadir}/kanidm/ui/hpkg/*
-%{_datadir}/kanidm/ui/hpkg/external/*
+# %{_datadir}/kanidm/ui/hpkg/external/* # included by previous line
 %dir %{configdir}
 %config(noreplace) %{configdir}/server.toml
 %dir %{_sysconfdir}/zsh_completion.d
@@ -193,7 +193,6 @@ cp -r %{_builddir}/kanidm-%{version}/server/core/static %{buildroot}%{_datadir}/
 
 %files unixd-clients
 %{_libdir}/libnss_kanidm.so.2
-%{_libdir}/libnss_kanidm.so
 %if 0%{?suse_version} > 1549
 %{_pam_moduledir}/pam_kanidm.so
 %else
