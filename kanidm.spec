@@ -18,7 +18,7 @@
 %define source_date_epoch_from_changelog 0
 
 Name:           kanidm
-Version: 1.4.3
+Version: 1.3.3
 Release:        1%{?dist}
 Summary:        A identity management service and clients.
 License:        ( Apache-2.0 OR BSL-1.0 ) AND ( Apache-2.0 OR ISC OR MIT ) AND ( Apache-2.0 OR MIT ) AND ( Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT ) AND ( CC0-1.0 OR Apache-2.0 ) AND ( MIT OR Apache-2.0 OR Zlib ) AND ( Unlicense OR MIT ) AND ( Zlib OR Apache-2.0 OR MIT ) AND Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND CC0-1.0 AND ISC AND MIT AND MPL-2.0 AND MPL-2.0+
@@ -108,24 +108,21 @@ install -D -d -m 0755 %{buildroot}%{_datadir}/kanidm
 install -D -d -m 0755 %{buildroot}%{_datadir}/kanidm/docs/
 install -D -d -m 0755 %{buildroot}%{_datadir}/kanidm/ui/
 
-install -m 0755 %{_builddir}/kanidm-%{version}/target/release/kanidmd %{buildroot}%{_sbindir}/kanidmd
-install -m 0755 %{_builddir}/kanidm-%{version}/target/release/kanidm %{buildroot}%{_bindir}/kanidm
-install -m 0755 %{_builddir}/kanidm-%{version}/target/release/kanidm-ipa-sync %{buildroot}%{_sbindir}/kanidm-ipa-sync
-install -m 0755 %{_builddir}/kanidm-%{version}/target/release/kanidm-ldap-sync %{buildroot}%{_sbindir}/kanidm-ldap-sync
-install -m 0755 %{_builddir}/kanidm-%{version}/target/release/kanidm-unix %{buildroot}%{_sbindir}/kanidm-unix
-install -m 0755 %{_builddir}/kanidm-%{version}/target/release/kanidm_ssh_authorizedkeys %{buildroot}%{_sbindir}/kanidm_ssh_authorizedkeys
-install -m 0755 %{_builddir}/kanidm-%{version}/target/release/kanidm_ssh_authorizedkeys_direct %{buildroot}%{_sbindir}/kanidm_ssh_authorizedkeys_direct
-install -m 0755 %{_builddir}/kanidm-%{version}/target/release/kanidm_unixd %{buildroot}%{_sbindir}/kanidm_unixd
-install -m 0755 %{_builddir}/kanidm-%{version}/target/release/kanidm_unixd_tasks %{buildroot}%{_sbindir}/kanidm_unixd_tasks
-install -m 0644 %{_builddir}/kanidm-%{version}/target/release/libnss_kanidm.so %{buildroot}%{_libdir}/libnss_kanidm.so.2
+install -m 0755 %{_builddir}/%{name}-%{version}/target/release/kanidmd %{buildroot}%{_sbindir}/kanidmd
+install -m 0755 %{_builddir}/%{name}-%{version}/target/release/kanidm %{buildroot}%{_bindir}/kanidm
+install -m 0755 %{_builddir}/%{name}-%{version}/target/release/kanidm-unix %{buildroot}%{_sbindir}/kanidm-unix
+install -m 0755 %{_builddir}/%{name}-%{version}/target/release/kanidm_ssh_authorizedkeys %{buildroot}%{_sbindir}/kanidm_ssh_authorizedkeys
+install -m 0755 %{_builddir}/%{name}-%{version}/target/release/kanidm_ssh_authorizedkeys_direct %{buildroot}%{_sbindir}/kanidm_ssh_authorizedkeys_direct
+install -m 0755 %{_builddir}/%{name}-%{version}/target/release/kanidm_unixd %{buildroot}%{_sbindir}/kanidm_unixd
+install -m 0755 %{_builddir}/%{name}-%{version}/target/release/kanidm_unixd_tasks %{buildroot}%{_sbindir}/kanidm_unixd_tasks
+install -m 0644 %{_builddir}/%{name}-%{version}/target/release/libnss_kanidm.so %{buildroot}%{_libdir}/libnss_kanidm.so.2
 
 install -m 0644 %{_builddir}/%{name}-%{version}/target/release/libpam_kanidm.so %{buildroot}/%_lib/security/pam_kanidm.so
 
-install -m 0644 %{_builddir}/kanidm-%{version}/platform/opensuse/kanidmd.service %{buildroot}%{_unitdir}/kanidmd.service
-install -m 0644 %{_builddir}/kanidm-%{version}/platform/opensuse/kanidm-unixd.service %{buildroot}%{_unitdir}/kanidm-unixd.service
-install -m 0644 %{_builddir}/kanidm-%{version}/platform/opensuse/kanidm-unixd-tasks.service %{buildroot}%{_unitdir}/kanidm-unixd-tasks.service
-install -m 0644 %{_builddir}/kanidm-%{version}/platform/opensuse/kanidm-ipa-sync.service %{buildroot}%{_unitdir}/kanidm-ipa-sync.service
-install -m 0644 %{_builddir}/kanidm-%{version}/examples/server.toml %{buildroot}%{configdir}/server.toml
+install -m 0644 %{_builddir}/%{name}-%{version}/platform/opensuse/kanidmd.service %{buildroot}%{_unitdir}/kanidmd.service
+install -m 0644 %{_builddir}/%{name}-%{version}/platform/opensuse/kanidm-unixd.service %{buildroot}%{_unitdir}/kanidm-unixd.service
+install -m 0644 %{_builddir}/%{name}-%{version}/platform/opensuse/kanidm-unixd-tasks.service %{buildroot}%{_unitdir}/kanidm-unixd-tasks.service
+install -m 0644 %{_builddir}/%{name}-%{version}/examples/server.toml %{buildroot}%{configdir}/server.toml
 
 install -m 0755 %{_builddir}/%{name}-%{version}/target/release/build/completions/_kanidmd   %{buildroot}%{_sysconfdir}/zsh_completion.d/_kanidmd
 install -m 0755 %{_builddir}/%{name}-%{version}/target/release/build/completions/_kanidm   %{buildroot}%{_sysconfdir}/zsh_completion.d/_kanidm
@@ -140,7 +137,7 @@ install -m 0755 %{_builddir}/%{name}-%{version}/target/release/build/completions
 install -m 0755 %{_builddir}/%{name}-%{version}/target/release/build/completions/kanidm_ssh_authorizedkeys.bash %{buildroot}%{_sysconfdir}/bash_completion.d/kanidm_ssh_authorizedkeys.sh
 
 cp -r %{_builddir}/%{name}-%{version}/book/src/ %{buildroot}%{_datadir}/kanidm/docs/
-cp -r %{_builddir}/kanidm-%{version}/server/core/static %{buildroot}%{_datadir}/kanidm/ui/hpkg
+cp -r %{_builddir}/%{name}-%{version}/server/web_ui/pkg %{buildroot}%{_datadir}/kanidm/ui/pkg
 
 ## End install
 
@@ -180,16 +177,13 @@ cp -r %{_builddir}/kanidm-%{version}/server/core/static %{buildroot}%{_datadir}/
 
 %files server
 %{_sbindir}/kanidmd
-%{_sbindir}/kanidm-ipa-sync
-%{_sbindir}/kanidm-ldap-sync
 %{_unitdir}/kanidmd.service
-%{_unitdir}/kanidm-ipa-sync.service
 %dir %{_datadir}/kanidm
 %dir %{_datadir}/kanidm/ui
-%dir %{_datadir}/kanidm/ui/hpkg
-%dir %{_datadir}/kanidm/ui/hpkg/external
-%{_datadir}/kanidm/ui/hpkg/*
-# %{_datadir}/kanidm/ui/hpkg/external/* # included by previous line
+%dir %{_datadir}/kanidm/ui/pkg
+%dir %{_datadir}/kanidm/ui/pkg/external
+%{_datadir}/kanidm/ui/pkg/*
+%{_datadir}/kanidm/ui/pkg/external/*
 %dir %{configdir}
 %config(noreplace) %{configdir}/server.toml
 %dir %{_sysconfdir}/zsh_completion.d
@@ -199,6 +193,7 @@ cp -r %{_builddir}/kanidm-%{version}/server/core/static %{buildroot}%{_datadir}/
 
 %files unixd-clients
 %{_libdir}/libnss_kanidm.so.2
+%{_libdir}/libnss_kanidm.so
 %if 0%{?suse_version} > 1549
 %{_pam_moduledir}/pam_kanidm.so
 %else
