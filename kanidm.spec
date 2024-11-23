@@ -193,7 +193,6 @@ cp -r %{_builddir}/%{name}-%{version}/server/web_ui/pkg %{buildroot}%{_datadir}/
 
 %files unixd-clients
 %{_libdir}/libnss_kanidm.so.2
-%{_libdir}/libnss_kanidm.so
 %if 0%{?suse_version} > 1549
 %{_pam_moduledir}/pam_kanidm.so
 %else
