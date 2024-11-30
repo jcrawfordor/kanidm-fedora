@@ -180,7 +180,7 @@ cp -r %{_builddir}/kanidm-%{version}/server/core/static %{buildroot}%{_datadir}/
 %files server
 %{_sbindir}/kanidmd
 %{_unitdir}/kanidmd.service
-%{_unitdir}/kanidmd-ipa-sync.service
+%{_unitdir}/kanidm-ipa-sync.service
 %dir %{_datadir}/kanidm
 %dir %{_datadir}/kanidm/ui
 %dir %{_datadir}/kanidm/ui/hpkg
