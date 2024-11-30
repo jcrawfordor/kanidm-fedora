@@ -24,6 +24,7 @@ Summary:        A identity management service and clients.
 License:        ( Apache-2.0 OR BSL-1.0 ) AND ( Apache-2.0 OR ISC OR MIT ) AND ( Apache-2.0 OR MIT ) AND ( Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT ) AND ( CC0-1.0 OR Apache-2.0 ) AND ( MIT OR Apache-2.0 OR Zlib ) AND ( Unlicense OR MIT ) AND ( Zlib OR Apache-2.0 OR MIT ) AND Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND CC0-1.0 AND ISC AND MIT AND MPL-2.0 AND MPL-2.0+
 URL:            https://github.com/kanidm/kanidm
 Source0:        https://github.com/kanidm/kanidm/archive/refs/tags/v%{version}.tar.gz
+Source1:        https://github.com/jcrawfordor/kanidm-fedora/archive/refs/heads/main.tar.gz
 
 BuildRequires:  cargo >= 1.69.0
 BuildRequires:  libselinux-devel
@@ -119,9 +120,10 @@ install -m 0644 %{_builddir}/%{name}-%{version}/target/release/libnss_kanidm.so 
 
 install -m 0644 %{_builddir}/%{name}-%{version}/target/release/libpam_kanidm.so %{buildroot}/%_lib/security/pam_kanidm.so
 
-install -m 0644 %{_builddir}/%{name}-%{version}/platform/opensuse/kanidmd.service %{buildroot}%{_unitdir}/kanidmd.service
-install -m 0644 %{_builddir}/%{name}-%{version}/platform/opensuse/kanidm-unixd.service %{buildroot}%{_unitdir}/kanidm-unixd.service
-install -m 0644 %{_builddir}/%{name}-%{version}/platform/opensuse/kanidm-unixd-tasks.service %{buildroot}%{_unitdir}/kanidm-unixd-tasks.service
+install -m 0644 %{_builddir}/%{name}-%{version}/platform/fedora/kanidmd.service %{buildroot}%{_unitdir}/kanidmd.service
+install -m 0644 %{_builddir}/%{name}-%{version}/platform/fedora/kanidm-unixd.service %{buildroot}%{_unitdir}/kanidm-unixd.service
+install -m 0644 %{_builddir}/%{name}-%{version}/platform/fedora/kanidm-unixd.service %{buildroot}%{_unitdir}/kanidm-ipa-sync.service
+install -m 0644 %{_builddir}/%{name}-%{version}/platform/fedora/kanidm-unixd-tasks.service %{buildroot}%{_unitdir}/kanidm-unixd-tasks.service
 install -m 0644 %{_builddir}/%{name}-%{version}/examples/server.toml %{buildroot}%{configdir}/server.toml
 
 install -m 0755 %{_builddir}/%{name}-%{version}/target/release/build/completions/_kanidmd   %{buildroot}%{_sysconfdir}/zsh_completion.d/_kanidmd

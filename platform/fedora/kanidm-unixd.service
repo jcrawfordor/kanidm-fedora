@@ -1,0 +1,51 @@
+# You should not need to edit this file. Instead, use a drop-in file:
+#   systemctl edit kanidm-unixd.service
+
+[Unit]
+Description=Kanidm Local Client Resolver
+After=chronyd.service nscd.service ntpd.service network-online.target suspend.target
+Before=systemd-user-sessions.service sshd.service nss-user-lookup.target
+Wants=nss-user-lookup.target
+# While it seems confusing, we need to be after nscd.service so that the
+# Conflicts will trigger and then automatically stop it.
+Conflicts=nscd.service
+
+[Service]
+DynamicUser=yes
+SupplementaryGroups=tss
+UMask=0027
+CacheDirectory=kanidm-unixd
+CacheDirectoryMode=600
+RuntimeDirectory=kanidm-unixd
+StateDirectory=kanidm-unixd
+
+Type=notify
+ExecStart=/usr/sbin/kanidm_unixd
+
+## If you wish to setup an external HSM pin you should set:
+# LoadCredential=hsmpin:/etc/kanidm/kanidm-unixd-hsm-pin
+# Environment=KANIDM_HSM_PIN_PATH=%d/hsmpin
+
+# Implied by dynamic user.
+# ProtectHome=
+# ProtectSystem=strict
+# ReadWritePaths=/var/run/kanidm-unixd /var/cache/kanidm-unixd
+
+# SystemCallFilter=@aio @basic-io @chown @file-system @io-event @network-io @sync
+NoNewPrivileges=true
+PrivateTmp=true
+# We have to disable this to allow tpmrm0 access for tpm binding.
+PrivateDevices=false
+# Older versions of systemd require this to be explicitly allowed.
+DeviceAllow=/dev/tpmrm0 rw
+
+ProtectHostname=true
+ProtectClock=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+MemoryDenyWriteExecute=true
+
+[Install]
+WantedBy=multi-user.target
