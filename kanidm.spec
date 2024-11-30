@@ -120,10 +120,10 @@ install -m 0644 %{_builddir}/%{name}-%{version}/target/release/libnss_kanidm.so 
 
 install -m 0644 %{_builddir}/%{name}-%{version}/target/release/libpam_kanidm.so %{buildroot}/%_lib/security/pam_kanidm.so
 
-install -m 0644 %{_builddir}/%{name}-%{version}/platform/fedora/kanidmd.service %{buildroot}%{_unitdir}/kanidmd.service
-install -m 0644 %{_builddir}/%{name}-%{version}/platform/fedora/kanidm-unixd.service %{buildroot}%{_unitdir}/kanidm-unixd.service
-install -m 0644 %{_builddir}/%{name}-%{version}/platform/fedora/kanidm-unixd.service %{buildroot}%{_unitdir}/kanidm-ipa-sync.service
-install -m 0644 %{_builddir}/%{name}-%{version}/platform/fedora/kanidm-unixd-tasks.service %{buildroot}%{_unitdir}/kanidm-unixd-tasks.service
+install -m 0644 %{_builddir}/%{name}-%{version}/kanidm-fedora-main/platform/fedora/kanidmd.service %{buildroot}%{_unitdir}/kanidmd.service
+install -m 0644 %{_builddir}/%{name}-%{version}/kanidm-fedora-main/platform/fedora/kanidm-unixd.service %{buildroot}%{_unitdir}/kanidm-unixd.service
+install -m 0644 %{_builddir}/%{name}-%{version}/kanidm-fedora-main/platform/fedora/kanidm-unixd.service %{buildroot}%{_unitdir}/kanidm-ipa-sync.service
+install -m 0644 %{_builddir}/%{name}-%{version}/kanidm-fedora-main/platform/fedora/kanidm-unixd-tasks.service %{buildroot}%{_unitdir}/kanidm-unixd-tasks.service
 install -m 0644 %{_builddir}/%{name}-%{version}/examples/server.toml %{buildroot}%{configdir}/server.toml
 
 install -m 0755 %{_builddir}/%{name}-%{version}/target/release/build/completions/_kanidmd   %{buildroot}%{_sysconfdir}/zsh_completion.d/_kanidmd
