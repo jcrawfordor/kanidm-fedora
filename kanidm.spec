@@ -82,7 +82,7 @@ Documentation for using and configuring Kanidm.
 %define configdir %{_sysconfdir}/%{name}
 
 %prep
-%autosetup -n %{name}-%{version}
+%autosetup -n %{name}-%{version} -a 1
 
 %build
 # Set our build profile, this will autodetect our cpu flags
