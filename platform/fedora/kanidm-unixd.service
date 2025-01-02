@@ -15,7 +15,7 @@ DynamicUser=yes
 SupplementaryGroups=tss
 UMask=0027
 CacheDirectory=kanidm-unixd
-CacheDirectoryMode=600
+CacheDirectoryMode=700
 RuntimeDirectory=kanidm-unixd
 StateDirectory=kanidm-unixd
 
