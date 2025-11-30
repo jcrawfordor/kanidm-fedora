@@ -20,7 +20,7 @@ RuntimeDirectory=kanidm-unixd
 StateDirectory=kanidm-unixd
 
 Type=notify
-ExecStart=/usr/sbin/kanidm_unixd
+ExecStart=/usr/bin/kanidm_unixd
 
 ## If you wish to setup an external HSM pin you should set:
 # LoadCredential=hsmpin:/etc/kanidm/kanidm-unixd-hsm-pin
