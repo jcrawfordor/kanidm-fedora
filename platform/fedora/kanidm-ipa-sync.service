@@ -11,7 +11,7 @@ Type=exec
 DynamicUser=yes
 LoadCredential=config:/etc/kanidm/ipa-sync
 Environment=KANIDM_IPA_SYNC_CONFIG=%d/config
-ExecStart=/usr/sbin/kanidm-ipa-sync --schedule
+ExecStart=/usr/bin/kanidm-ipa-sync --schedule
 
 AmbientCapabilities=CAP_NET_BIND_SERVICE
 CapabilityBoundingSet=CAP_NET_BIND_SERVICE
